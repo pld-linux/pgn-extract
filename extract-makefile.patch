@@ -1,20 +1,21 @@
 --- extract/Makefile	1996/06/28 19:02:10	1.1
 +++ extract/Makefile	1996/06/28 19:03:17
-@@ -19,14 +19,15 @@
+@@ -20,7 +20,7 @@
  
  OBJS=grammar.o lex.o map.o decode.o moves.o lists.o apply.o output.o eco.o\
- 	lines.o end.o main.o
+ 	lines.o end.o main.o hashing.o argsfile.o mymalloc.o
 -DEBUGINFO=-g
 +DEBUGINFO=-O2
+ 
  # These flags are particularly severe on checking warnings.
  # It may be that they are not all appropriate to your environment.
- # For instance, not all environments have prototypes available for
- # the standard library functions.
- CFLAGS=-c -ansi -pedantic -Wall -Wshadow -Wformat -Wpointer-arith \
+@@ -32,7 +32,8 @@
+ 
+ CFLAGS=-c -pedantic -Wall -Wshadow -Wformat -Wpointer-arith \
  	-Wstrict-prototypes -Wmissing-prototypes -Wwrite-strings $(DEBUGINFO)\
 -	-I/usr/local/lib/ansi-include
 +	-I/usr/local/lib/ansi-include \
-+	-DDEFAULT_ECO_FILE=\"/usr/lib/games/extract/eco.pgn\"
++	-DDEFAULT_ECO_FILE=\"/usr/lib/games/pgn-extract/eco.pgn\"
  CC=gcc
  
  # AIX 3.2 Users might like to use these alternatives for CFLAGS and CC.
