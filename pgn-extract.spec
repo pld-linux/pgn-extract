@@ -1,41 +1,47 @@
-Summary:	Utility to extract and manipulate chess games in PGN format.
-Name:		extract
-Version:	1.0
-Release:	4
+Summary:	Utility to extract and manipulate chess games in PGN format
+Summary(pl):	narzêdzie do ekstrakcji partii szachowych z plików w formacie PGN i manipulowania nimi
+Name:		pgn-extract
+%define		oldname		extract
+Version:	15.0
+Release:	1
 License:	GPL
 Group:		Applications/Games
-Source0:	ftp://mango.ukc.ac.uk/djb/Extract/%{name}.tar.gz
-# Source0-md5:	10eb7480f285b1f738a5c9593d7855ec
-Patch0:		%{name}-makefile.patch
-Patch1:		%{name}-moves.patch
-Patch2:		%{name}-egcs.patch
+Source0:	ftp://ftp.cs.kent.ac.uk/pub/djb/Extract/%{name}.tgz
+# Source0-md5:	ae83686650900af4d027e17b6e34f361
+Patch0:		%{oldname}-makefile.patch
+#Patch1:		%{oldname}-moves.patch
+#Patch2:		%{oldname}-egcs.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This small utility can extract and manipulate chess game files in PGN
 format.
 
+%description -l pl
+Jest to niewielki program s³u¿±cy do ekstrakcji partii szachowych z
+plików w formacie PGN i do manipulowania nimi.
+
 %prep
 %setup -q -c
-%patch -p1
-%patch1
-%patch2
+%patch0 -p1
+#%patch1
+#%patch2
 
 %build
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix}/bin,%{_prefix}/lib/games/extract}
-cp extract $RPM_BUILD_ROOT%{_prefix}/bin/
-install -d $RPM_BUILD_ROOT%{_prefix}/lib/games/extract
-cp eco.pgn $RPM_BUILD_ROOT%{_prefix}/lib/games/extract
+install -d $RPM_BUILD_ROOT{%{_prefix}/bin,%{_prefix}/lib/games/pgn-extract}
+cp pgn-extract $RPM_BUILD_ROOT%{_prefix}/bin/
+install -d $RPM_BUILD_ROOT%{_prefix}/lib/games/pgn-extract
+cp eco.pgn $RPM_BUILD_ROOT%{_prefix}/lib/games/pgn-extract
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc README help.html
 %attr(755,root,root) %{_prefix}/bin/*
-%{_prefix}/lib/games/extract
+%{_prefix}/lib/games/pgn-extract
