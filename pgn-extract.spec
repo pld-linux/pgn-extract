@@ -1,5 +1,5 @@
 Summary:	Utility to extract and manipulate chess games in PGN format
-Summary(pl):	narzêdzie do ekstrakcji partii szachowych z plików w formacie PGN i manipulowania nimi
+Summary(pl):	Narzêdzie do ekstrakcji partii szachowych z plików w formacie PGN i manipulowania nimi
 Name:		pgn-extract
 Version:	15.0
 Release:	1
@@ -31,8 +31,9 @@ plików w formacie PGN i do manipulowania nimi.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix}/bin,%{_prefix}/lib/games/pgn-extract}
-cp pgn-extract $RPM_BUILD_ROOT%{_prefix}/bin/
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_prefix}/lib/games/pgn-extract}
+
+install pgn-extract $RPM_BUILD_ROOT%{_bindir}
 install -d $RPM_BUILD_ROOT%{_prefix}/lib/games/pgn-extract
 cp eco.pgn $RPM_BUILD_ROOT%{_prefix}/lib/games/pgn-extract
 
@@ -42,5 +43,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README help.html
-%attr(755,root,root) %{_prefix}/bin/*
+%attr(755,root,root) %{_bindir}/*
 %{_prefix}/lib/games/pgn-extract
