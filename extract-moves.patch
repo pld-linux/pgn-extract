@@ -1,0 +1,11 @@
+--- moves.c~	Mon Dec 28 14:30:27 1998
++++ moves.c	Mon Dec 28 14:44:47 1998
+@@ -651,7 +651,7 @@
+ 	 fprintf(GlobalState.logfile,"Unable to find %s\n",filename);
+ 	 exit(1);
+      }
+-     else if((statbuf.st_mode & (S_IFREG|S_IREAD)) != (S_IFREG|S_IREAD)){
++     else if((!S_ISREG(statbuf.st_mode)) || (!(statbuf.st_mode&S_IRUSR))) {
+ 	 fprintf(GlobalState.logfile,"%s doesn't appear to be accessible.\n",
+ 				filename);
+ 	 exit(1);

@@ -1,0 +1,53 @@
+--- lex.c~	Sat Jul 24 09:36:40 1999
++++ lex.c	Sat Jul 24 09:47:45 1999
+@@ -61,7 +61,7 @@
+ static Boolean skipping_game = FALSE;
+ 
+ /* Provide an input file pointer. */
+-FILE *yyin = stdin;
++FILE *yyin;
+ 
+ /* Define space for holding matched tokens. */
+ #define MAX_YYTEXT 100
+@@ -889,7 +889,7 @@
+ 	/* Use infile as the input source. */
+ static Boolean
+ open_input(const char *infile)
+-{   extern FILE *yyin;
++{   
+ 
+     yyin = fopen(infile,"r");
+     if(yyin != NULL){
+--- main.c~	Tue May  7 01:54:33 1996
++++ main.c	Sat Jul 24 09:44:45 1999
+@@ -73,8 +73,8 @@
+     (char *)NULL,	/* current_input_file */
+     NORMALFILE,		/* current_file_type */
+     DEFAULT_ECO_FILE,   /* eco_file */
+-    stdout,		/* outputfile */
+-    stderr,		/* logfile */
++    NULL,		/* outputfile */
++    NULL,		/* logfile */
+     (FILE *)NULL, 	/* duplicate_file */
+     (FILE *)NULL, 	/* non_matching_file */
+ };
+@@ -154,6 +154,8 @@
+   exit(1);
+ }
+ 
++extern FILE* yyin;
++
+ int
+ main(int argc, char *argv[])
+ {   int argnum;
+@@ -165,6 +167,10 @@
+ 			    (SourceFileType *) NULL,
+ 			    0, 0
+ 			  };
++
++    yyin = stdin;
++    GlobalState.outputfile = stdout;
++    GlobalState.logfile = stderr;
+ 
+     /* Prepare the hash tables for transposition detection. */
+     init_hashtab();
