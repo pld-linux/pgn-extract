@@ -1,16 +1,15 @@
 Summary:	Utility to extract and manipulate chess games in PGN format
 Summary(pl):	narzêdzie do ekstrakcji partii szachowych z plików w formacie PGN i manipulowania nimi
 Name:		pgn-extract
-%define		oldname		extract
 Version:	15.0
 Release:	1
 License:	GPL
 Group:		Applications/Games
 Source0:	ftp://ftp.cs.kent.ac.uk/pub/djb/Extract/%{name}.tgz
 # Source0-md5:	ae83686650900af4d027e17b6e34f361
-Patch0:		%{oldname}-makefile.patch
-#Patch1:		%{oldname}-moves.patch
-#Patch2:		%{oldname}-egcs.patch
+Patch0:		%{name}-makefile.patch
+#Patch1:	extract-moves.patch
+#Patch2:	extract-egcs.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
