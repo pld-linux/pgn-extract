@@ -1,5 +1,5 @@
 Summary:	Utility to extract and manipulate chess games in PGN format
-Summary(pl.UTF-8):   Narzędzie do ekstrakcji partii szachowych z plików w formacie PGN i manipulowania nimi
+Summary(pl.UTF-8):	Narzędzie do ekstrakcji partii szachowych z plików w formacie PGN i manipulowania nimi
 Name:		pgn-extract
 Version:	15.0
 Release:	1
