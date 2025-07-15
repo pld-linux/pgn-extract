@@ -23,8 +23,8 @@ plików w formacie PGN i do manipulowania nimi.
 %prep
 %setup -q -c
 %patch -P0 -p1
-#%patch1
-#%patch2
+#%%patch1
+#%%patch2
 
 %build
 %{__make}
