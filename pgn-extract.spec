@@ -22,7 +22,7 @@ plików w formacie PGN i do manipulowania nimi.
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch -P0 -p1
 #%patch1
 #%patch2
 
